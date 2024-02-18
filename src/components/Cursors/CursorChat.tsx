@@ -32,7 +32,9 @@ const CursorChat: React.FC<CursorChatProps> = ({ cursor, cursorState, setCursorS
       {cursorState.mode === CursorMode.Chat ? <>
         <CursorSVG color="#000" />
 
-        <div className="absolute left-2 top-5 bg-black text-white rounded-full px-5 py-2 leading-relaxed text-sm">
+        <div 
+        onKeyUp={e => e.stopPropagation()}
+        className="absolute left-2 top-5 bg-black text-white rounded-full px-5 py-2 leading-relaxed text-sm">
 
           {
             cursorState.previousMessage ?
@@ -44,7 +46,10 @@ const CursorChat: React.FC<CursorChatProps> = ({ cursor, cursorState, setCursorS
               </>
           }
 
-          <input type="text" className="bg-transparent placeholder:text-gray-200 text-white text-sm outline-none focus:outline-none border-none z-10" autoFocus placeholder={cursorState.previousMessage ? '' : "Type a message..."} />
+          <input
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          type="text" className="bg-transparent placeholder:text-gray-200 text-white text-sm outline-none focus:outline-none border-none z-10" autoFocus placeholder={cursorState.previousMessage ? '' : "Type a message..."} />
 
         </div>
       </> : <></>}
