@@ -46,7 +46,7 @@ export const createLine = (pointer: PointerEvent) => {
   return new fabric.Line(
     [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
     {
-      stroke: "#aabbcc",
+      stroke: "#000",
       strokeWidth: 2,
       objectId: uuidv4(),
     } as CustomFabricObject<fabric.Line>

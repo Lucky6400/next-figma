@@ -9,8 +9,8 @@ const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
   // memoize the result of this function so that it doesn't change on every render but only when there are new shapes
   const memoizedShapes = useMemo(
     () => (
-      <section className="flex flex-col bg-blue-800 border-t border-primary-grey-200 bg-primary-black text-primary-grey-300 min-w-[227px] sticky left-0 h-screen max-md:hidden select-none overflow-y-auto pb-20">
-        <h3 className="px-5 py-4 text-xs text-white uppercase">Layers</h3>
+      <section className="flex flex-col  border-r border-gray-300 bg-primary-black text-primary-grey-300 min-w-[227px] sticky left-0 h-screen max-md:hidden select-none overflow-y-auto pb-20">
+        <h3 className="px-5 py-4 text-xs text-black uppercase">Layers</h3>
         <div className="flex flex-col">
           {allShapes?.map((shape: any) => {
             const info = getShapeInfo(shape[1]?.type);
@@ -18,7 +18,7 @@ const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
             return (
               <div
                 key={shape[1]?.objectId}
-                className="group my-1 flex items-center gap-2 px-5 py-2.5 hover:cursor-pointer hover:bg-primary-green hover:text-primary-black"
+                className="group my-1 flex items-center gap-2 px-5 py-2.5 hover:cursor-pointer hover:bg-black hover:text-white"
               >
                 <Image
                   src={info?.icon}

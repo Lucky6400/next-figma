@@ -7,7 +7,7 @@ type Props = {
 export default function ReactionBtn({ setReaction }: Props) {
   return (
     <div
-      className="absolute bottom-24 left-0 right-0 mx-auto w-max border border-gray-400 rounded-full px-3 py-2"
+      className="absolute bottom-24 left-0 right-0 mx-auto w-max border bg-white border-gray-400 rounded-full px-3 py-2"
       onPointerMove={(e) => e.stopPropagation()}
     >
       <ReactionButton reaction="👍" onSelect={setReaction} />
@@ -31,7 +31,7 @@ function ReactionButton(
 ) {
   return (
     <button
-      className="transform select-none p-2 text-xl transition-transform hover:scale-150 focus:scale-150 focus:outline-none"
+      className="transform select-none px-2 text-xl transition-transform hover:scale-150 focus:scale-150 focus:outline-none"
       onPointerDown={() => onSelect(reaction)}
     >
       {reaction}

@@ -300,7 +300,7 @@ export const handleCanvasSelectionCreated = ({
       width: scaledWidth?.toFixed(0).toString() || "",
       height: scaledHeight?.toFixed(0).toString() || "",
       fill: selectedElement?.fill?.toString() || "",
-      stroke: selectedElement?.stroke || "",
+      stroke: selectedElement?.stroke || "#000",
       // @ts-ignore
       fontSize: selectedElement?.fontSize || "",
       // @ts-ignore

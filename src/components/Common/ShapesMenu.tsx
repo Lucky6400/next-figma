@@ -25,7 +25,7 @@ const ShapesMenu = ({
               src={isDropdownElem ? activeElement.icon : item.icon}
               alt={item.name}
               fill
-              className={isDropdownElem ? "invert" : ""}
+             // className={isDropdownElem ? "invert" : ""}
             />
           </Button>
         </DropdownMenuTrigger>
@@ -47,7 +47,7 @@ const ShapesMenu = ({
                   alt={elem?.name as string}
                   width={20}
                   height={20}
-                  className={activeElement.value === elem?.value ? "invert" : ""}
+                  //className={activeElement.value === elem?.value ? "invert" : ""}
                 />
                 <p
                   className={`text-sm  ${

@@ -15,12 +15,12 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
     (Array.isArray(value) && value.some((val) => val?.value === activeElement?.value));
 
   return (
-    <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
+    <nav className="flex select-none h-12 items-center bg-black justify-between gap-4 pb-1 bg-primary-black px-5 text-white">
       <div className="font-serif text-black text-xl">
         nxtFig
       </div>
 
-      <ul className="flex flex-row fixed left-0 right-0 mx-auto bottom-10 w-max bg-gray-700 z-[999999] my-2">
+      <ul className="flex flex-row fixed left-0 h-12 mx-auto top-0 w-max bg-black z-[999999]">
         {navElements.map((item: ActiveElement | any) => (
           <li
             key={item.name}
@@ -29,7 +29,7 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
               handleActiveElement(item);
             }}
             className={`group px-2.5 max-md:px-1 max-md:py-2 py-3 flex transition-all ease-in-out justify-center items-center
-            ${isActive(item.value) ? "bg-black" : "hover:bg-blue-800"}
+            ${isActive(item.value) ? "bg-blue-800" : "hover:bg-blue-800"}
             `}
           >
             {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
@@ -49,7 +49,7 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
                     src={item.icon}
                     alt={item.name}
                     fill
-                    className={isActive(item.value) ? "invert" : ""}
+                    //className={isActive(item.value) ? "invert" : ""}
                   />
                 </Button>
               </NewThread>
@@ -59,7 +59,7 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
                   src={item.icon}
                   alt={item.name}
                   fill
-                  className={isActive(item.value) ? "invert" : ""}
+                  //className={isActive(item.value) ? "invert" : ""}
                 />
               </Button>
             )}

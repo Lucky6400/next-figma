@@ -7,7 +7,6 @@ import { useMemo } from "react";
 export const ActiveUsers = () => {
     const users = useOthers();
     const currentUser = useSelf();
-    console.log(currentUser)
     const hasMoreUsers = users.length > 3;
 
     const memoizedComp = useMemo(() => (

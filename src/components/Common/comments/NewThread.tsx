@@ -171,8 +171,8 @@ export const NewThread = ({ children }: Props) => {
 
       // Set coords relative to the top left of your canvas
       const { top, left } = overlayPanel.getBoundingClientRect();
-      const x = composerCoords.x - left;
-      const y = composerCoords.y - top;
+      const x = composerCoords.x;
+      const y = composerCoords.y;
 
       // create a new thread with the composer coords and cursor selectors
       createThread({
