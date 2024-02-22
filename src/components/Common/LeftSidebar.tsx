@@ -34,6 +34,7 @@ const LeftSidebar = ({ allShapes }: { allShapes: Array<any> }) => {
         </div>
       </section>
     ),
+    // eslint-disable-next-line
     [allShapes?.length]
   );
 
