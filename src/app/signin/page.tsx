@@ -1,6 +1,7 @@
 'use client'
 
 import { signIn } from '@/services/auth';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
@@ -51,6 +52,9 @@ const Signin = () => {
           <button type="submit" className="bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-600">
             Signin
           </button>
+          <div className="text-sm font-ssemibold">
+            No account? <Link className="text-blue-500 font-semibold" href="/signup">Sign Up</Link>
+          </div>
           {loading ? <p className="my-3 text-xs">Please wait while we are logging you in...</p> : <></>}
         </form>
       </div>

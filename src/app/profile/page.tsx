@@ -1,9 +1,10 @@
 'use client';
 import ProfileLoader from '@/components/Common/Loaders/ProfileLoader';
-import { getCurrentUser, updateUser } from '@/services/auth';
+import { getCurrentUser, signOut, updateUser } from '@/services/auth';
 import { UserType } from '@/types/type';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 type FormData = Record<string, string>;
@@ -11,6 +12,7 @@ type FormData = Record<string, string>;
 const Profile = () => {
 
     const [loading, setLoading] = useState<boolean>(true);
+    const router = useRouter();
     const [user, setUser] = useState<UserType | null>(null);
 
     const [formData, setFormData] = useState<FormData>({});
@@ -26,7 +28,7 @@ const Profile = () => {
         try {
             const data = {
                 ...formData,
-                skills: formData.skills ?  formData.skills?.split(",") : user?.skills
+                skills: formData.skills ? formData.skills?.split(",") : user?.skills
             }
 
             const res = await updateUser(user?._id!, data);
@@ -57,6 +59,20 @@ const Profile = () => {
         }
         getData();
     }, [])
+
+    const handleSignOut = async () => {
+        setLoading(true);
+        try {
+            const res = await signOut();
+            if (res.success) {
+                router.push("/signin");
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    }
     return (
         loading ?
             <div className="w-full flex items-center justify-center h-screen">
@@ -107,9 +123,15 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <button disabled={loading} className="w-full mt-2 disabled:cursor-not-allowed bg-blue-500 text-white text-sm font-semibold p-2 rounded-lg">
+                    <button type='submit' disabled={loading} className="w-full mt-2 disabled:cursor-not-allowed bg-blue-500 text-white text-sm font-semibold p-2 rounded-lg">
                         Submit
                     </button>
+
+                <button
+                    onClick={handleSignOut}
+                    disabled={loading} className="w-full mt-2 disabled:cursor-not-allowed bg-red-500 text-white text-sm font-semibold p-2 rounded-lg">
+                    Log Out
+                </button>
                 </form>
             </div>
     )

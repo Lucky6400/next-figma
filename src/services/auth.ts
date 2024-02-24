@@ -12,6 +12,29 @@ export const signIn = async (payload: any) => {
     }
 }
 
+export const signUp = async (payload: any) => {
+    try {
+        const res = await axios.post(`/api/users/signup`, payload);
+        const data = await res.data;
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
+
+export const signOut = async () => {
+    try {
+        const res = await axios.get(`/api/users/signout`);
+        const data = await res.data;
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export const getCurrentUser = async () => {
 
     const res = await axios.get(`/api/users/getcurrent`);
@@ -29,7 +52,7 @@ export const updateUser = async (id: string, data: any) => {
     try {
         const res = await axios.put(`/api/users/${id}`, data);
         const resData = await res.data;
-        if(resData.success) {
+        if (resData.success) {
             return resData
         }
         return "Error";
