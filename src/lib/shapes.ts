@@ -15,6 +15,7 @@ export const createRectangle = (pointer: PointerEvent) => {
     width: 100,
     height: 100,
     fill: "#aabbcc",
+    opacity: 0.9,
     objectId: uuidv4(),
   } as CustomFabricObject<fabric.Rect>);
 

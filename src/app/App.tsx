@@ -22,6 +22,7 @@ export default function App() {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const isEditingRef = useRef(false);
   const isDrawing = useRef(false);
+
   const [elementAttributes, setElementAttributes] = useState<Attributes>({
     width: "",
     height: "",
@@ -30,6 +31,7 @@ export default function App() {
     fontWeight: "",
     fill: "#aabbcc",
     stroke: "#000",
+    opacity: 0.9
   });
   const canvasObject = useStorage(r => r.canvasObjects);
   const undo = useUndo();

@@ -16,17 +16,17 @@ export async function POST(request: NextRequest) {
         console.log(request.cookies.get("token"))
         const user = await getDataFromToken(request);
 
-        
-    // Identify the user and return the result
-    const { status, body } = await liveblocks.identifyUser(
-        {
-            userId: user.id as string,
-            groupIds: []
-        },
-        { userInfo: user },
-    );
+        const userData = await User.findById(user.id);
+        // Identify the user and return the result
+        const { status, body } = await liveblocks.identifyUser(
+            {
+                userId: user.id as string,
+                groupIds: []
+            },
+            { userInfo: { ...user, userData } },
+        );
 
-    return new Response(body, { status });
+        return new Response(body, { status });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

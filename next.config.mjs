@@ -16,6 +16,16 @@ const nextConfig = {
           hostname: "liveblocks.io",
           port: "",
         },
+        {
+          protocol: "https",
+          hostname: "t4.ftcdn.net",
+          port: "",
+        },
+        {
+          protocol: "https",
+          hostname: "images.pexels.com",
+          port: ""
+        }
       ],
     },
     typescript: {

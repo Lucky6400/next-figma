@@ -6,6 +6,7 @@ import Export from './settings/Export'
 import { RightSidebarProps } from '@/types/type'
 import { modifyShape } from '@/lib/shapes'
 import { fabric } from 'fabric';
+import { Label } from "@/components/ui/label";
 
 
 const RightSidebar: React.FC<RightSidebarProps> = ({
@@ -17,13 +18,12 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   syncShapeInStorage,
 }) => {
 
-  const { width, height, fontFamily, fontSize, fontWeight, fill, stroke } = elementAttributes;
+  const { width, height, fontFamily, fontSize, fontWeight, fill, stroke, opacity } = elementAttributes;
   const colorInputRef = useRef(null);
   const strokeInputRef = useRef(null);
 
   const handleInputChange = (property: string, value: string) => {
     if (!isEditingRef.current) isEditingRef.current = true;
-
     setElementAttributes(p => ({
       ...p,
       [property]: value
@@ -35,7 +35,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
     });
   }
   return (
-    <section className="bg-white text-black flex items-center flex-col border-l border-gray-300 min-w-[227px] sticky right-0 max-md:hidden overflow-x-hidden overflow-y-auto h-screen">
+    <section className="bg-white text-black flex items-center flex-col border-l border-gray-300 min-w-[227px] sticky right-0 max-md:hidden overflow-x-hidden overflow-y-auto pb-20 h-screen">
 
       <h3 className="px-5 py-4 text-xs text-black uppercase">design</h3>
 
@@ -43,11 +43,33 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
         isEditingRef={isEditingRef} width={width} height={height} handleInputChange={handleInputChange}
       />
       <Text handleInputChange={handleInputChange} fontFamily={fontFamily} fontWeight={fontWeight} fontSize={fontSize} />
-      <Color inputRef={colorInputRef} attribute={fill} placeholder='Color' handleInputChange={handleInputChange} attributeType="fill" />
+      <Color inputRef={colorInputRef} attribute={fill} opacity={opacity} placeholder='Color' handleInputChange={handleInputChange} attributeType="fill" />
       <Color inputRef={strokeInputRef} attribute={stroke} placeholder='Stroke' handleInputChange={handleInputChange} attributeType='stroke' />
-      <Export />
 
-    </section>
+      <Export />
+      <h3 className='text-[10px] uppercase w-full px-5'>{"Code </>"}</h3>
+      <div className="w-full p-5">
+        <div className="w-full bg-gray-300 p-2 rounded-lg">
+
+          {elementAttributes.width ?
+            <>
+             { `
+              <div style={{
+                width: ${elementAttributes.width},
+                height: ${elementAttributes.height},
+                background: ${elementAttributes.fill},
+                opacity: ${elementAttributes.opacity || 1}
+           }}>
+
+            </div>
+          `}
+        </>
+        :
+        <></>
+          }
+      </div>
+    </div>
+    </section >
   )
 }
 

@@ -6,6 +6,7 @@ type Props = {
   placeholder: string;
   attributeType: string;
   handleInputChange: (property: string, value: string) => void;
+  opacity?: number
 };
 
 const Color = ({
@@ -14,7 +15,9 @@ const Color = ({
   placeholder,
   attributeType,
   handleInputChange,
+  opacity
 }: Props) => (
+
   <div className='flex w-full flex-col gap-3 border-b border-gray-400 p-5 text-black'>
     <h3 className='text-[10px] uppercase'>{placeholder}</h3>
     <div
@@ -28,9 +31,10 @@ const Color = ({
         onChange={(e) => handleInputChange(attributeType, e.target.value)}
       />
       <Label className='flex-1'>{attribute}</Label>
-      <Label className='flex h-6 w-8 items-center justify-center bg-black text-white text-[10px] leading-3'>
-        90%
-      </Label>
+      {opacity ?
+       <input type="number" value={opacity} className='w-16 focus: outline-none border-l px-1 border-black' min={0} max={1} step={0.01} onChange={e => handleInputChange("opacity", e.target.value)} />
+      : <></>}
+     
     </div>
   </div>
 );

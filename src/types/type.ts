@@ -10,21 +10,21 @@ export enum CursorMode {
 
 export type CursorState =
   | {
-      mode: CursorMode.Hidden;
-    }
+    mode: CursorMode.Hidden;
+  }
   | {
-      mode: CursorMode.Chat;
-      message: string;
-      previousMessage: string | null;
-    }
+    mode: CursorMode.Chat;
+    message: string;
+    previousMessage: string | null;
+  }
   | {
-      mode: CursorMode.ReactionSelector;
-    }
+    mode: CursorMode.ReactionSelector;
+  }
   | {
-      mode: CursorMode.Reaction;
-      reaction: string;
-      isPressed: boolean;
-    };
+    mode: CursorMode.Reaction;
+    reaction: string;
+    isPressed: boolean;
+  };
 
 export type Reaction = {
   value: string;
@@ -56,6 +56,7 @@ export type Attributes = {
   fontWeight: string;
   fill: string;
   stroke: string;
+  opacity: number;
 };
 
 export type ActiveElement = {
@@ -190,3 +191,35 @@ export type CursorChatProps = {
     }>
   ) => void;
 };
+
+
+export interface RoomType {
+  type: string;
+  id: string;
+  lastConnectionAt: string;
+  createdAt: string;
+  metadata: Record<string, unknown>;
+  defaultAccesses: string[];
+  groupsAccesses: Record<string, unknown>;
+  usersAccesses: Record<string, unknown>;
+}
+
+
+export type UserType = {
+  _id: string,
+  username: string,
+  email: string,
+  skills: string[],
+  isVerified: boolean,
+  isAdmin: boolean,
+  imgUrl: string,
+  desc: string
+}
+
+export type UserInfo = {
+  id: string,
+  username: string,
+  email: string,
+  iat: number,
+  exp: number
+}

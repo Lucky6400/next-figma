@@ -29,11 +29,21 @@ type Storage = {
 // will not change during a session, like a user's name or avatar.
 type UserMeta = {
   id?: string,  // Accessible through `user.id`
-   info?: {
+  info?: {
     username: string,
     email: string,
-    id: string
-   },  // Accessible through `user.info`
+    id: string,
+    userData: {
+      _id: string,
+      username: string,
+      email: string,
+      skills: string[],
+      isVerified: boolean,
+      isAdmin: boolean,
+      imgUrl: string,
+      desc: string
+    }
+  },  // Accessible through `user.info`
 };
 
 // Optionally, the type of custom events broadcast and listened to in this

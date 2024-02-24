@@ -168,6 +168,7 @@ const Live: React.FC<Props> = ({ canvasRef, undo ,redo }) => {
         }
     }, []);
 
+
     return (
         <ContextMenu>
             <ContextMenuTrigger style={{

@@ -4,12 +4,12 @@ import Image from "next/image";
 
 const IMAGE_SIZE = 48;
 
-export function Avatar({ name, otherStyles }: { name: string, otherStyles: string }) {
+export function Avatar({ name, otherStyles, src }: { name: string, otherStyles: string, src?: string }) {
     return (
         <div className={styles.avatar + " " + otherStyles + " h-9 w-9"} data-tooltip={name}>
             <Image
                 alt=""
-                src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
+                src={src || `https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
                 fill
                 className={styles.avatar_picture}
             />

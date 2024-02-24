@@ -8,20 +8,20 @@ export const ActiveUsers = () => {
     const users = useOthers();
     const currentUser = useSelf();
     const hasMoreUsers = users.length > 3;
-    // console.log(currentUser.info)
+    console.log(currentUser.info)
     const memoizedComp = useMemo(() => (
         <main className="flex items-center">
             <div className="flex pl-3">
                 {currentUser && (
                     <div className="relative ml-8 first:ml-0">
-                        <Avatar otherStyles="border-2 border-blue-600" name={currentUser.info ? (currentUser?.info?.username + "(You)") : "" } />
+                        <Avatar src={currentUser?.info?.userData?.imgUrl} otherStyles="border-2 border-blue-600" name={currentUser.info ? (currentUser?.info?.username + "(You)") : ""} />
                     </div>
                 )}
 
                 {users.slice(0, 3).map(({ connectionId, info }) => {
-                    
+
                     return (
-                        <Avatar key={connectionId} otherStyles="-ml-2" name={info ? info.username : ""} />
+                        <Avatar src={info?.userData?.imgUrl} key={connectionId} otherStyles="-ml-2" name={info ? info.username : ""} />
                     );
                 })}
 
@@ -30,7 +30,7 @@ export const ActiveUsers = () => {
 
             </div>
         </main>
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     ), [users.length])
 
     return memoizedComp
