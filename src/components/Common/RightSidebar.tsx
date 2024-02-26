@@ -35,7 +35,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
     });
   }
   return (
-    <section className="bg-white text-black flex items-center flex-col border-l border-gray-300 min-w-[227px] sticky right-0 max-md:hidden overflow-x-hidden overflow-y-auto pb-20 h-screen">
+    <section className="bg-white text-black flex items-center flex-col border-l border-gray-300 min-w-[300px]  sticky right-0 max-md:hidden overflow-x-hidden overflow-y-auto pb-20 h-screen">
 
       <h3 className="px-5 py-4 text-xs text-black uppercase">design</h3>
 
@@ -48,7 +48,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
 
       <Export />
       <h3 className='text-[10px] uppercase w-full px-5'>{"Code </>"}</h3>
-      <div className="w-full p-5">
+      <div className="w-full p-5 max-w-[300px]">
         <div className="w-full bg-gray-300 p-2 rounded-lg">
 
           {elementAttributes.width ?
@@ -57,7 +57,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
               <div style={{
                 width: ${elementAttributes.width},
                 height: ${elementAttributes.height},
-                background: ${elementAttributes.fill},
+                background: "${elementAttributes.fill}",
                 opacity: ${elementAttributes.opacity || 1}
            }}>
 
